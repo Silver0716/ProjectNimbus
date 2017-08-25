@@ -39,6 +39,8 @@ public class proc_CollaborateUser_verifyDelPersonalInfo extends mod_CollaborateU
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(confirm)));
 			dr.findElement(By.xpath(confirm)).click();
 			
+			System.out.println("Hello");
+			
 //			if (dr.findElement(By.xpath(sectionCreated)) == null)
 //			{
 //				
