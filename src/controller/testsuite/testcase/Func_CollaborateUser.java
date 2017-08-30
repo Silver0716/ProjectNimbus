@@ -9,6 +9,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import processor.proc_CollaborateUser_verifySearchField;
+import processor.proc_CollaborateUser_verifyViewExternalContacts;
+import processor.proc_Config_ImportVerification;
+import processor.proc_Config_RolesVerification;
 import processor.proc_SeleniumDriver;
 import processor.proc_CollaborateUser_verifyAddExternalContacts;
 import processor.proc_CollaborateUser_verifyAddOrg;
@@ -24,12 +27,15 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 	proc_CollaborateUser_verifySearchField pc_vSF = new proc_CollaborateUser_verifySearchField();
 	proc_CollaborateUser_verifySearchField pc_vDF = new proc_CollaborateUser_verifySearchField();
 	proc_CollaborateUser_verifyAddExternalContacts pc_vAEC = new proc_CollaborateUser_verifyAddExternalContacts();
+	proc_CollaborateUser_verifyViewExternalContacts pc_vVEC = new proc_CollaborateUser_verifyViewExternalContacts();
 	proc_CollaborateUser_verifyDelExternalContacts pc_vDEC = new proc_CollaborateUser_verifyDelExternalContacts();
 	proc_CollaborateUser_verifyAddOrg pc_vAO = new proc_CollaborateUser_verifyAddOrg();
 	proc_CollaborateUser_verifyDelOrg pc_vDO = new proc_CollaborateUser_verifyDelOrg();
 	proc_CollaborateUser_verifyAddPersonalInfo pc_vAPI = new proc_CollaborateUser_verifyAddPersonalInfo();
 	proc_CollaborateUser_verifyDelPersonalInfo pc_vDPI = new proc_CollaborateUser_verifyDelPersonalInfo();
 	proc_CollaborateUser_verifyImportLinkedIn pc_vILI = new proc_CollaborateUser_verifyImportLinkedIn();
+	proc_Config_ImportVerification pc_vIV = new proc_Config_ImportVerification();
+	proc_Config_RolesVerification pc_vRV = new proc_Config_RolesVerification();
 	proc_SeleniumDriver proc_SD = new proc_SeleniumDriver();
 	
 
@@ -68,8 +74,15 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		WebDriver dr = proc_SD.getWebDriver();
 		pc_vAEC.initSteps(dr);
 		pc_vAEC.init_Search(dr);
-		
 	}
+	
+//		@Test(priority=8)
+//	public void verifyViewExternalContacts()
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vVEC.initSteps(dr);
+//		pc_vVEC.init_Search(dr);
+//	}
 	
 	@Test(priority=3)
 	public void verifyDelExternalContacts() throws Exception
@@ -110,7 +123,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		WebDriver dr = proc_SD.getWebDriver();
 		pc_vILI.initSteps(dr);
 		pc_vILI.init_Search(dr);
-	}*/
+	}
 	
 	@Test(priority=8)
 	public void verifyDelPersonalInfo()
@@ -119,5 +132,22 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		pc_vDPI.initSteps(dr);
 		pc_vDPI.init_Search(dr);
 	}
+	
+	@Test(priority=9)
+	public void Config_ImportVerification() throws Exception
+	{
+		WebDriver dr = proc_SD.getWebDriver();
+		pc_vIV.initSteps(dr);
+		pc_vIV.init_Search(dr);
+	}*/
+	
+	@Test(priority=10)
+	public void Config_RolesVerification() throws Exception
+	{
+		WebDriver dr = proc_SD.getWebDriver();
+		pc_vRV.initSteps(dr);
+		pc_vRV.init_Search(dr);
+	}
+
 	
 }

@@ -23,9 +23,17 @@ public class mod_UniversalURL
 	 * */
 	
 	//proc_CollaborateUser_verifySearchField - Collaborate User Credentials
+//	public String collab_Username = "testuser@domain.com";
+//	public String collab_password = "St4rw4rs!";
+	
 	public String collab_Username = "nhel.grandia@genesys.com";
 	public String collab_password = "AMayasuki.3";
+	
 	public String orgText = "genesysmanilaenablementteam";
+	
+//	public String admin_Username = "nhel.grandia@genesys.com";
+//	public String admin_password = "AMayasuki.3";
+//	
 	
 	
 	public String collab_TestUserName = "Test";

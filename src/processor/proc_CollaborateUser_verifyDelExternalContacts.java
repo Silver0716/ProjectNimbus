@@ -1,5 +1,7 @@
 package processor;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +25,7 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 		public void init_Search(WebDriver dr) throws Exception
 		{
 			WebDriverWait wait = new WebDriverWait(dr, 30);
+			dr.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		
 			try
 			{
@@ -40,12 +43,14 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 				WebElement searchContacts = dr.findElement(By.xpath(searchField));
 				searchContacts.sendKeys(p_UL.collab_TestUserName+" "+p_UL.collab_TestUserLastName); 
 				
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contactResultCountFalse)));
-				searchContacts.sendKeys(Keys.ENTER);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contactResultCount)));
+				//searchContacts.sendKeys(Keys.ENTER);
 
-			
+				//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(results)));
+				dr.findElement(By.xpath("html/body")).click();
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchResult)));
-				dr.findElement(By.xpath(searchResult)).sendKeys(Keys.ENTER);
+				//dr.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				dr.findElement(By.xpath(searchResult)).click();
 				
 				dr.switchTo().defaultContent();
 				dr.findElement(By.xpath("html/body")).click();
@@ -66,13 +71,15 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
 				searchContacts = dr.findElement(By.xpath(searchField));
+				searchContacts.clear();
 				searchContacts.sendKeys(p_UL.collab_TestUserName+" "+p_UL.collab_TestUserLastName); 
 				
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contactResultCountTrue)));
-				searchContacts.sendKeys(Keys.ENTER);
+				//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(searchResult)));
 				
 				
-				Assert.assertTrue(dr.findElements(By.xpath(contactResultCountTrue)).size()!=0);
+				//Assert.assertTrue(dr.findElements(By.xpath(contactResultCountTrue)).size()!=0);
+				Assert.assertTrue(dr.findElements(By.xpath(searchResult)).size()== 0);
 				p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Delete External Contacts", "Pass", " ");
 			
 				

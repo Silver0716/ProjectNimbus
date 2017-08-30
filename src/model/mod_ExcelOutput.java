@@ -17,7 +17,6 @@ public class mod_ExcelOutput
 	public void setOutputValues(String key, String testObj, String status, String remarks)
 	{
 		ExcelOutputTable.add(Arrays.asList(key, testObj, status, remarks));
-		System.out.println(ExcelOutputTable);
 	}
 	
 	public ArrayList<List<String>> getOutputValues(String key, String value, String remarks)
