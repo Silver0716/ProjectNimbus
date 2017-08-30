@@ -51,48 +51,75 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 				dr.findElement(By.xpath(People)).click();
 				
 				rowcount = sheet1.getLastRowNum();
-				totalValueComparison = totalColumns*rowcount;
+				//totalValueComparison = totalColumns*rowcount;
 				
 				System.out.println("Total Test Case is "+rowcount);
 
+					for(int i=1; i<=rowcount; i++)
+					{
+						String exName = sheet1.getRow(i).getCell(0).getStringCellValue();
+						String exRoles = sheet1.getRow(i).getCell(7).getStringCellValue();
+						
+						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
+						WebElement searchUser = dr.findElement(By.xpath(searchField));
+						searchUser.sendKeys(exName);
+						Thread.sleep(3000);
+						searchUser.sendKeys(Keys.BACK_SPACE);
+						dr.findElement(By.linkText(exName)).click();
+						
+						dr.switchTo().defaultContent();
+						//dr.findElement(By.xpath("html/body")).click();
+						dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
+						
+						//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dDropdown)));
+						WebElement elDropdown = dr.findElement(By.xpath(dDropdown));
+						elDropdown.click();
+						Select se = new Select(elDropdown);
+						dr.findElement(By.cssSelector(".form-control.input-sm.ng-pristine.ng-valid.ng-empty.ng-touched"));
+						se.selectByVisibleText("Assigned");
+						
+						System.out.println("Role: "+exRoles);
+						
+						if (exRoles.equals("admin")) 
+						{
+							wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Remployee)));
+							WebElement ConfirmEmployee = dr.findElement(By.xpath(Remployee));
+							System.out.println(ConfirmEmployee.getText());
+							wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Radmin)));
+							WebElement ConfirmAdmin = dr.findElement(By.xpath(Radmin));
+							System.out.println(ConfirmAdmin.getText());
+						}
+						else if(exRoles.equals("Communicate - User"))
+						{
+							wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Remployee)));
+							WebElement ConfirmEmployee = dr.findElement(By.xpath(Remployee));
+							System.out.println(ConfirmEmployee.getText());
+							wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(RcomUser)));
+							WebElement ConfirmComUser = dr.findElement(By.xpath(RcomUser));
+							System.out.println(ConfirmComUser.getText());
+						}
+						else 
+						{
+							//Other Roles to be entered.
+						}
+						
+						dr.switchTo().defaultContent();
+						dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
 				
-				for(int i=1; i<=rowcount; i++)
-				{
-					String exName = sheet1.getRow(i).getCell(0).getStringCellValue();
-					String exRoles = sheet1.getRow(i).getCell(7).getStringCellValue();
+						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(cancel)));
+						dr.findElement(By.xpath(cancel)).click();
+						
+						dr.findElement(By.xpath("html/body"));
+						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
+						dr.findElement(By.xpath(searchField)).clear();
+						
+					}//done with this part
 					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
-					WebElement searchUser = dr.findElement(By.xpath(searchField));
-					searchUser.sendKeys(exName);
-					Thread.sleep(3000);
-					searchUser.sendKeys(Keys.BACK_SPACE);
-					dr.findElement(By.linkText(exName)).click();
+	//THE FOLLOWING CODES ARENT DONE YET.>>>
 					
-					//dr.switchTo().defaultContent();
-					dr.findElement(By.xpath("html/body")).click();
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath(iframe2)));
-					dr.switchTo().frame(dr.findElement(By.xpath(iframe2)));
-					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dDropdown)));
-					WebElement elDropdown = dr.findElement(By.xpath(dDropdown));
-					elDropdown.click();
-					Select se = new Select(elDropdown);
-					se.selectByIndex(0);
-					
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Remployee)));
-					dr.findElement(By.xpath(Remployee));
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Radmin)));
-					dr.findElement(By.xpath(Radmin));
-//					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(RcomUser)));
-//					dr.findElement(By.xpath(RcomUser));
-//					
-
 					String[] aa = {Remployee, Radmin};
 					Assert.assertTrue(rolesLocated(aa,dr));
 					p_EO.setOutputValues(p_EO.CollaborateUser, "Verify User Import Information", "Pass", " ");
-				
-				}
-
 				}
 				catch(AssertionError e)
 				{

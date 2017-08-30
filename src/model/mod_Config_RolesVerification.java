@@ -14,14 +14,16 @@ public class mod_Config_RolesVerification
 	public String iframe1 = ".//*[@name='admin']";
 	public String iframe2 = ".//*[@id='directory-people-edit']/descendant::iframe[contains(@class,'directory')]";
 	public String searchField = ".//*[@id='directory-people-index']/div[1]/div[2]/child::kelly-kidgloves-input/child::input";
-	public String dDropdown = ".//*[@id='directory-people-edit']/descendant::select[contains(@class,'form-control input-sm ng-pristine ng-valid ng-empty ng-touched')]";
+	public String dDropdown = ".//*[@id='directory-people-edit']/div/div/div[4]/div[1]/div[1]/div/div[3]/table/thead/tr[2]/th[5]/div/select";
+	
+	public String cancel = ".//*[@id='directory-people-edit']/menu/div[1]/a";
+	
 	
 	public String Remployee = ".//*[@id='directory-people-edit']/descendant::table[contains(@class,'table-top-aligned-cells')]/descendant::span[contains(text(),'employee')]";
 	public String Radmin = ".//*[@id='directory-people-edit']/descendant::table[contains(@class,'table-top-aligned-cells')]/descendant::span[contains(text(),'admin')]";
 	public String RcomUser = ".//*[@id='directory-people-edit']/descendant::table[contains(@class,'table-top-aligned-cells')]/descendant::span[contains(text(),'Communicate - User')]";
 	
 	public int totalValuePassed = 0;
-	public int totalColumns = 2;
 	public int totalValueComparison;
 	public int rowcount;
 

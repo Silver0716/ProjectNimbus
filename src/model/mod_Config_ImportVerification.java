@@ -1,7 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 
@@ -22,11 +25,13 @@ public class mod_Config_ImportVerification
 	public String cancel = ".//*[@id='directory-people-edit']/menu/div[1]/a" ;
 	
 	public int totalValuePassed = 0;
-	public int totalColumns = 2;
+	public int totalColumns = 9;
 	public int totalValueComparison;
 	public int rowcount;
-	
 	public int colcount;
+	public static HashMap<String, String> temp_map;
+	public static List<HashMap<String, String>> entryArray = new ArrayList<HashMap<String, String>>();
+	public static List<String> headers = new ArrayList<>();
 	
 	public static List<String> failRemarks = new ArrayList<>();
 	
