@@ -25,6 +25,7 @@ public class mod_Config_RolesVerification
 	public int totalValueComparison;
 	public int rowcount;
 
+
 	public static List<String> failRemarks = new ArrayList<>();
 	
 	public void add(String excelValue, String value)

@@ -2,6 +2,12 @@ package processor;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -53,9 +59,39 @@ public class proc_Config_ImportVerification extends mod_Config_ImportVerificatio
 				rowcount = sheet1.getLastRowNum();
 				totalValueComparison = totalColumns*rowcount;
 				
-				System.out.println("Total Test Case is "+rowcount);
-
+				//column check
+				colcount = sheet1.getRow(0).getLastCellNum();
+				Iterator rows = sheet1.rowIterator();
+				List data = new ArrayList();
 				
+				while (rows.hasNext()) {
+	                HSSFRow row = (HSSFRow) rows.next();
+	                Iterator cells = row.cellIterator();
+				
+				System.out.println("Total Test Case is "+rowcount);
+				System.out.println("Total columns is "+colcount);
+
+				for( int x=1; x<=colcount; x++)
+                { // Loop through cells
+				     HSSFCell cell;
+
+	                    if( row.getCell(x) == null )
+	                    {
+	                        cell = row.createCell(x);
+	                    } 
+	                    else 
+	                    {
+	                        cell = row.getCell(x);
+	                    }
+
+	                    data.add(cell);
+
+	            }
+
+	                sheetData.add(data);
+	                
+	                
+	            //original row loop	
 				for(int i=1; i<=rowcount; i++)
 				{
 					String exName = sheet1.getRow(i).getCell(0).getStringCellValue();

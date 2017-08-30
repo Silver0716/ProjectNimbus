@@ -26,6 +26,8 @@ public class mod_Config_ImportVerification
 	public int totalValueComparison;
 	public int rowcount;
 	
+	public int colcount;
+	
 	public static List<String> failRemarks = new ArrayList<>();
 	
 	public void add(String excelValue, String value)
