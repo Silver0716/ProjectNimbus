@@ -20,12 +20,13 @@ import processor.proc_CollaborateUser_verifyDelExternalContacts;
 import processor.proc_CollaborateUser_verifyDelOrg;
 import processor.proc_CollaborateUser_verifyDelPersonalInfo;
 import processor.proc_CollaborateUser_verifyImportLinkedIn;
+import processor.proc_CollaborateUser_verifyDirectorySearch;
 
 
 public class Func_CollaborateUser extends proc_SeleniumDriver
 {
 	proc_CollaborateUser_verifySearchField pc_vSF = new proc_CollaborateUser_verifySearchField();
-	proc_CollaborateUser_verifySearchField pc_vDF = new proc_CollaborateUser_verifySearchField();
+	proc_CollaborateUser_verifyDirectorySearch pc_vDF = new proc_CollaborateUser_verifyDirectorySearch();
 	proc_CollaborateUser_verifyAddExternalContacts pc_vAEC = new proc_CollaborateUser_verifyAddExternalContacts();
 	proc_CollaborateUser_verifyViewExternalContacts pc_vVEC = new proc_CollaborateUser_verifyViewExternalContacts();
 	proc_CollaborateUser_verifyDelExternalContacts pc_vDEC = new proc_CollaborateUser_verifyDelExternalContacts();
@@ -52,102 +53,102 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		proc_SD.deleteDirectory();
 	}
 	
-	/*@Test(priority=0)
+	@Test(priority=2)
 	public void verifySearchField()
 	{
 		WebDriver dr = proc_SD.getWebDriver();		
 		pc_vSF.initSteps(dr);
 		pc_vSF.init_Search(dr);
-	}*/
-	
-	/*@Test(priority=1)
-	public void verifyDirectoryField()
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vDF.initSteps(dr);
-		pc_vDF.init_Search(dr);
 	}
-	
-	@Test(priority=2)
+//	
+//	@Test(priority=3)
+//	public void verifyDirectoryField()
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vDF.initSteps(dr);
+//		pc_vDF.init_Search(dr);
+//	}
+//	
+	@Test(priority=4)
 	public void verifyAddExternalContacts() throws Exception
 	{
 		WebDriver dr = proc_SD.getWebDriver();
 		pc_vAEC.initSteps(dr);
 		pc_vAEC.init_Search(dr);
 	}
-	
-//		@Test(priority=8)
+//	
+//		@Test(priority=5,dependsOnMethods={"verifyAddExternalContacts"})
 //	public void verifyViewExternalContacts()
 //	{
 //		WebDriver dr = proc_SD.getWebDriver();
 //		pc_vVEC.initSteps(dr);
 //		pc_vVEC.init_Search(dr);
 //	}
+//	
+//	@Test(priority=6,dependsOnMethods={"verifyAddExternalContacts","verifyViewExternalContacts"})
+//	public void verifyDelExternalContacts() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vDEC.initSteps(dr);
+//		pc_vDEC.init_Search(dr);
+//	}
+//	
+//	@Test(priority=7)
+//	public void verifyAddOrg() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vAO.initSteps(dr);
+//		pc_vAO.init_Search(dr);
+//	}
+//	
+//	
+//	@Test(priority=8,dependsOnMethods={"verifyAddOrg"})
+//	public void verifyDelOrg()
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vDO.initSteps(dr);
+//		pc_vDO.init_Search(dr);
+//	}
+//	
+//	@Test(priority=9)
+//	public void verifyAddPersonalInfo()
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vAPI.initSteps(dr);
+//		pc_vAPI.init_Search(dr);
+//	}
+//	
+//	@Test(priority=10)
+//	public void verifyImportLinkedIn() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vILI.initSteps(dr);
+//		pc_vILI.init_Search(dr);
+//	}
+//	
+//	@Test(priority=11,dependsOnMethods={"verifyAddPersonalInfo"})
+//	public void verifyDelPersonalInfo()
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vDPI.initSteps(dr);
+//		pc_vDPI.init_Search(dr);
+//	}
 	
-	@Test(priority=3)
-	public void verifyDelExternalContacts() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vDEC.initSteps(dr);
-		pc_vDEC.init_Search(dr);
-	}
+//	@Test(priority=0)
+//	public void Config_ImportVerification() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vIV.initSteps(dr);
+//		pc_vIV.init_Search(dr);
+//	}
 	
-	@Test(priority=4)
-	public void verifyAddOrg() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vAO.initSteps(dr);
-		pc_vAO.init_Search(dr);
-	}
-	
-	
-	@Test(priority=5)
-	public void verifyDelOrg()
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vDO.initSteps(dr);
-		pc_vDO.init_Search(dr);
-	}
-	
-	@Test(priority=6)
-	public void verifyAddPersonalInfo()
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vAPI.initSteps(dr);
-		pc_vAPI.init_Search(dr);
-	}
-	
-	@Test(priority=7)
-	public void verifyImportLinkedIn() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vILI.initSteps(dr);
-		pc_vILI.init_Search(dr);
-	}
-	
-	@Test(priority=8)
-	public void verifyDelPersonalInfo()
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vDPI.initSteps(dr);
-		pc_vDPI.init_Search(dr);
-	}
-	
-	@Test(priority=9)
-	public void Config_ImportVerification() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vIV.initSteps(dr);
-		pc_vIV.init_Search(dr);
-	}*/
-	
-	@Test(priority=10)
-	public void Config_RolesVerification() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vRV.initSteps(dr);
-		pc_vRV.init_Search(dr);
-	}
+//	@Test(priority=1)
+//	public void Config_RolesVerification() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vRV.initSteps(dr);
+//		pc_vRV.init_Search(dr);
+//	}
 
 	
 }

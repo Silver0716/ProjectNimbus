@@ -2,16 +2,20 @@ package controller.testsuite.testcase;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import processor.proc_SeleniumDriver;
 import processor.proc_Config_ImportVerification;
+import processor.proc_Config_RolesVerification;
+import processor.proc_ExcelOutput;
 
 public class Config_Test 
 {
-	proc_Config_ImportVerification pc_IV = new proc_Config_ImportVerification();
-	
+	proc_Config_ImportVerification pc_vIV = new proc_Config_ImportVerification();
+	proc_Config_RolesVerification pc_vRV = new proc_Config_RolesVerification();
+	proc_ExcelOutput p_EO = new proc_ExcelOutput();
 	proc_SeleniumDriver proc_SD = new proc_SeleniumDriver();
 	
 	@BeforeMethod
@@ -26,14 +30,21 @@ public class Config_Test
 		proc_SD.endWebDriver();
 		proc_SD.deleteDirectory();
 	}
+	
+	@AfterSuite
+	public void printResult()
+	{
+		p_EO.printOutputValues();
+	}
 
-	@Test
-	public void ImportVerification() throws Exception
+	@Test(priority=0)
+	public void Config_ImportVerification() throws Exception
 	{
 		WebDriver dr = proc_SD.getWebDriver();
-		pc_IV.initSteps(dr);
-		pc_IV.init_Search(dr);
+		pc_vIV.initSteps(dr);
+		pc_vIV.init_Search(dr);
 	}
+	
 	
 }
 

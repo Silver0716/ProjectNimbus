@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  
+
+<suite thread-count="2" verbose="1" name="PureCloud" annotations="JDK" parallel="tests">
+  
+   <test name="Config">
+     <classes>
+       <class name="controller.testsuite.testcase.Config_Test"/>
+     </classes>
+   </test>
+         
+  <test name="CollaborateUser">
+     <classes>
+       <class name="controller.testsuite.testcase.Func_CollaborateUser"/>
+     </classes>
+   </test>
+   
+</suite>

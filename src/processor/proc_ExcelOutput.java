@@ -1,8 +1,10 @@
 package processor;
 
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,12 +17,16 @@ import model.mod_ExcelOutput;
 
 public class proc_ExcelOutput extends mod_ExcelOutput
 {
+	
+	
 	public void printOutputValues()
 	{
 		XSSFWorkbook workbook = new XSSFWorkbook();
-		
-		
+		XSSFSheet sheet;
 		int initRowCount = ExcelOutputTable.size();
+		
+		int ctr_rowConfig = 1;
+		int ctr_rowCU = 1;
 		
 		for(int row=0; row<initRowCount; row++)
 		{
@@ -37,18 +43,29 @@ public class proc_ExcelOutput extends mod_ExcelOutput
 				{
 					case CollaborateUser :
 						
-						XSSFSheet sheet = workbook.getSheet(CollaborateUser);
-						sheet = isSheetExisting(sheet,workbook);
+						 sheet = workbook.getSheet(CollaborateUser);
+						sheet = isSheetExisting(sheet,workbook,CollaborateUser);
 						
-						Row rowCU = sheet.createRow(rowExcel);
+						Row rowCU = sheet.createRow(ctr_rowCU);
 						
 							while(col<initColCount)
 							{
 								
 								Cell cellCU = rowCU.createCell(col);
-								cellCU.setCellValue((String)ExcelOutputTable.get(row).get(col).toString());
-								col++;
+								String value = (String)ExcelOutputTable.get(row).get(col).toString();
+								if(value!=CollaborateUser&&col==0)
+								{
+									col = col+4;
+								}
+								else
+								{
+									cellCU.setCellValue(value);
+									col++;
+								}
+								
 							}
+							ctr_rowCU++;
+						break;
 
 						
 					case CommunicateUser :
@@ -70,6 +87,24 @@ public class proc_ExcelOutput extends mod_ExcelOutput
 					case PureCloudDeveloper :
 					
 						break;
+						
+					case Config :
+						
+						sheet = workbook.getSheet(Config);
+						sheet = isSheetExisting(sheet,workbook,Config);
+						
+						Row rowConfig = sheet.createRow(ctr_rowConfig);
+						
+						
+							while(col<initColCount)
+							{
+								
+								Cell cellCU = rowConfig.createCell(col);
+								cellCU.setCellValue((String)ExcelOutputTable.get(row).get(col).toString());
+								col++;
+							}
+						ctr_rowConfig++;
+						break;
 				}
 			}
 		}
@@ -84,7 +119,6 @@ public class proc_ExcelOutput extends mod_ExcelOutput
 			 e.printStackTrace();
 		 }
 	}
-	
 	
 	public void createHeader(XSSFSheet sheet)
 	{
@@ -106,28 +140,31 @@ public class proc_ExcelOutput extends mod_ExcelOutput
 		cell.setCellValue((String)"Remarks");
 	}
 	
-	public XSSFSheet isSheetExisting(XSSFSheet sheet, XSSFWorkbook workbook)
+	public XSSFSheet isSheetExisting(XSSFSheet sheet, XSSFWorkbook workbook, String sheetName)
 	{
-		sheet = workbook.getSheet(CollaborateUser);
-		
+		sheet = workbook.getSheet(sheetName);
+		int s = workbook.getNumberOfSheets();
 		if(workbook.getNumberOfSheets()!=0)
 		{
 			for(int i=0; i<workbook.getNumberOfSheets();i++)
 			{
-				if(workbook.getSheetName(i).equals(CollaborateUser))
+				if(workbook.getSheetName(i).equals(sheetName))
 				{
-					sheet = workbook.getSheet(CollaborateUser);
+					sheet = workbook.getSheet(sheetName);
 					return sheet;
 				}
 			}
-		}
-		else
-		{
-			sheet = workbook.createSheet(CollaborateUser);
+			sheet = workbook.createSheet(sheetName);
 			createHeader(sheet);
 			return sheet;
 		}
-		return sheet;
+		else
+		{
+			sheet = workbook.createSheet(sheetName);
+			createHeader(sheet);
+			return sheet;
+		}
+		
 	}
 	
 	
