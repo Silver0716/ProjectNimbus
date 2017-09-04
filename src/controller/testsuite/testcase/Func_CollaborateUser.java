@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeTest;
 
 import processor.proc_CollaborateUser_verifySearchField;
 import processor.proc_CollaborateUser_verifyViewExternalContacts;
+import processor.proc_CollaborateUser_verifyViewOrg;
 import processor.proc_Config_ImportVerification;
 import processor.proc_Config_RolesVerification;
 import processor.proc_SeleniumDriver;
@@ -36,6 +37,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 	proc_CollaborateUser_verifyImportLinkedIn pc_vILI = new proc_CollaborateUser_verifyImportLinkedIn();
 	proc_Config_ImportVerification pc_vIV = new proc_Config_ImportVerification();
 	proc_Config_RolesVerification pc_vRV = new proc_Config_RolesVerification();
+	proc_CollaborateUser_verifyViewOrg pc_vVO = new proc_CollaborateUser_verifyViewOrg();
 	proc_SeleniumDriver proc_SD = new proc_SeleniumDriver();
 	
 
@@ -66,7 +68,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		WebDriver dr = proc_SD.getWebDriver();
 		pc_vDF.initSteps(dr);
 		pc_vDF.init_Search(dr);
-	}
+	}*/
 	
 	@Test(priority=2)
 	public void verifyAddExternalContacts() throws Exception
@@ -84,7 +86,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vVEC.init_Search(dr);
 //	}
 	
-	@Test(priority=3)
+	/*@Test(priority=3)
 	public void verifyDelExternalContacts() throws Exception
 	{
 		WebDriver dr = proc_SD.getWebDriver();
@@ -139,7 +141,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		WebDriver dr = proc_SD.getWebDriver();
 		pc_vIV.initSteps(dr);
 		pc_vIV.init_Search(dr);
-	}*/
+	}
 	
 	@Test(priority=10)
 	public void Config_RolesVerification() throws Exception
@@ -147,7 +149,15 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 		WebDriver dr = proc_SD.getWebDriver();
 		pc_vRV.initSteps(dr);
 		pc_vRV.init_Search(dr);
-	}
+	}*/
+	
+//	@Test(priority=0)
+//	public void verifyViewOrg() 
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vVO.initSteps(dr);
+//		pc_vVO.init_Search(dr);
+//	}
 
 	
 }

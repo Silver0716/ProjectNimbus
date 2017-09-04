@@ -6,8 +6,8 @@
       <class name="controller.testsuite.testcase.Func_CollaborateUser">
         <methods>
           <include name="initSeleniumDriver"/>
-          <include name="Config_RolesVerification"/>
           <include name="deleteSeleniumDriver"/>
+          <include name="verifyAddExternalContacts"/>
         </methods>
       </class> <!-- controller.testsuite.testcase.Func_CollaborateUser -->
     </classes>

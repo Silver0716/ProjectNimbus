@@ -4,32 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
+//.getPath().toString().replaceAll("%20","");
+
 public class mod_Config_RolesVerification 
 {
 	public String elAdmin = "html/body/descendant::li[contains(@class,'menu-top-level-item menu-admin')]/descendant::a[contains(@title,'Admin')]";
+	public String textFile = "resources/testImport.xlsx";
+//	public String csvFile = this.getClass().getClassLoader().getResource("resources\testImport.xlsx").getPath().toString().replaceAll("%20", " ");
 	public String csvFile = "C:\\Users\\ngrandia\\Documents\\Automation (QA)\\Bulk Import CSV\\test_bulk_import.xlsx";
 	public static XSSFSheet sheet1;
 	
-	public String People = ".//*[@id='home-welcomeV2']/descendant::div[contains(@class,'row')]/descendant::a[contains(text(),'People')]";
+	public String RolesPerm = ".//*[@id='home-welcomeV2']/descendant::div[contains(@class,'row')]/descendant::a[contains(text(),'Roles')]";
 	public String iframe1 = ".//*[@name='admin']";
 	public String iframe2 = ".//*[@id='directory-people-edit']/descendant::iframe[contains(@class,'directory')]";
-	public String searchField = ".//*[@id='directory-people-index']/div[1]/div[2]/child::kelly-kidgloves-input/child::input";
-	public String dDropdown = ".//*[@id='directory-people-edit']/div/div/div[4]/div[1]/div[1]/div/div[3]/table/thead/tr[2]/th[5]/div/select";
+	public String RoleField = ".form-control.input-sm.ng-pristine.ng-valid.ng-empty.ng-touched";
+	public String dDropdown = ".//*[@id='directory-rolesV2-index']/descendant::select";
 	
-	public String cancel = ".//*[@id='directory-people-edit']/menu/div[1]/a";
+	public String defAdmin = ".//*[@id='directory-rolesV2-index']/descendant::div[contains(@class,'fixtable-inner')]/descendant::div[contains(@class,'roleInfo break-text')]/descendant::strong[contains(text(),'admin')]";
+	public String editButton = ".//*[@id='directory-rolesV2-index']/descendant::a[contains(@class,'btn btn-default btn-sm')]";
+	
+	public String permTab = ".//*[@id='directory-rolesV2-edit']/descendant::a[contains(text(),'Permissions')]";
 	
 	
-	public String Remployee = ".//*[@id='directory-people-edit']/descendant::table[contains(@class,'table-top-aligned-cells')]/descendant::span[contains(text(),'employee')]";
-	public String Radmin = ".//*[@id='directory-people-edit']/descendant::table[contains(@class,'table-top-aligned-cells')]/descendant::span[contains(text(),'admin')]";
-	public String RcomUser = ".//*[@id='directory-people-edit']/descendant::table[contains(@class,'table-top-aligned-cells')]/descendant::span[contains(text(),'Communicate - User')]";
-	
+	public static List<String> failRemarks = new ArrayList<>();
+
 	public int totalValuePassed = 0;
 	public int totalValueComparison;
 	public int rowcount;
 
-
-	public static List<String> failRemarks = new ArrayList<>();
-	
 	public void add(String excelValue, String value)
 	{
 		

@@ -26,14 +26,13 @@ public class proc_CollaborateUser_verifyAddExternalContacts extends mod_Collabor
 	
 		try
 		{
-			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DirectoryText)));
 			dr.findElement(By.xpath(DirectoryText)).click();
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 			dr.findElement(By.xpath(ExContacts)).click();
 			
-			dr.findElement(By.xpath("html/body")).click();
+			//dr.findElement(By.xpath("html/body")).click();
 			dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(AddButton)));
@@ -55,7 +54,7 @@ public class proc_CollaborateUser_verifyAddExternalContacts extends mod_Collabor
 			wait.until(ExpectedConditions.elementToBeClickable(By.id(proceed)));
 			dr.findElement(By.id(proceed)).click();
 			
-			dr.findElement(By.xpath("html/body")).click();
+			//dr.findElement(By.xpath("html/body")).click();
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(save)));
 			Thread.sleep(1000);
 			dr.findElement(By.xpath(save)).sendKeys(Keys.ENTER);
@@ -72,7 +71,7 @@ public class proc_CollaborateUser_verifyAddExternalContacts extends mod_Collabor
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 			dr.findElement(By.xpath(ExContacts)).click();
 			
-			dr.findElement(By.xpath("html/body")).click();
+			//dr.findElement(By.xpath("html/body")).click();
 			dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
