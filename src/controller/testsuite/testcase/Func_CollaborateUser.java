@@ -85,13 +85,13 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vVEC.init_Search(dr);
 //	}
 //	
-	@Test(priority=0)
-	public void verifyDelExternalContacts() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vDEC.initSteps(dr);
-		pc_vDEC.init_Search(dr);
-	}
+//	@Test(priority=0)
+//	public void verifyDelExternalContacts() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vDEC.initSteps(dr);
+//		pc_vDEC.init_Search(dr);
+//	}
 //	
 //	@Test(priority=7)
 //	public void verifyAddOrg() throws Exception
@@ -141,12 +141,12 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vDPI.init_Search(dr);
 //	}
 //	
-//	@Test(priority=10)
-//	public void Config_RolesVerification() throws Exception
-//	{
-//		WebDriver dr = proc_SD.getWebDriver();
-//		pc_vRV.initSteps(dr);
-//		pc_vRV.init_Search(dr);
-//	}
+	@Test(priority=10)
+	public void Config_RolesVerification() throws Exception
+	{
+		WebDriver dr = proc_SD.getWebDriver();
+		pc_vRV.initSteps(dr);
+		pc_vRV.init_Search(dr);
+	}
 	
 }

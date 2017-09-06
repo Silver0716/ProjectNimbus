@@ -1,7 +1,12 @@
 package processor;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -26,9 +31,11 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 		public void init_Search(WebDriver dr) throws Exception
 		{
 			WebDriverWait wait = new WebDriverWait(dr, 30);
-			File src = new File(csvFile);
+			File src = new File(xlsxFile);
 			FileInputStream fis = new FileInputStream(src);
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
+			int ctrA = 0;
+			int ctrB = 0;
 			
 			try
 			{
@@ -43,56 +50,78 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 				}
 
 				dr.switchTo().defaultContent();
-				dr.findElement(By.xpath("html/body")).click();
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(iframe1)));
 				dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
 				
-//				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(RolesPerm)));
 				dr.findElement(By.xpath(RolesPerm)).click();
 				
 				rowcount = sheet1.getLastRowNum();
-				//totalValueComparison = totalColumns*rowcount;
-				
-				System.out.println("Total Test Case is "+rowcount);
 
-					for(int i=1; i<=rowcount; i++)
+				System.out.println("Total Test Case is "+rowcount);
+				
+				wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(RoleField)));
+				WebElement search = dr.findElement(By.cssSelector(RoleField));
+				search.sendKeys("admin");
+				
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dDropdown)));
+				WebElement elDropdown = dr.findElement(By.xpath(dDropdown));
+				elDropdown.click();
+				Select se = new Select(elDropdown);
+				se.selectByVisibleText("Default");
+				
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(defAdmin)));
+				dr.findElement(By.xpath(defAdmin)).click();
+				
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(editButton)));
+				dr.findElement(By.xpath(editButton)).click();
+				
+				//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(permTab)));
+				dr.findElement(By.xpath(permTab)).click();
+
+					for(int i=0; i<=rowcount; i++)
 					{
-						String exName = sheet1.getRow(i).getCell(0).getStringCellValue();
-						String exRoles = sheet1.getRow(i).getCell(7).getStringCellValue();
+						exPerms = sheet1.getRow(i).getCell(0).getStringCellValue();
 						
-						wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(RoleField)));
-						WebElement search = dr.findElement(By.cssSelector(RoleField));
-						search.sendKeys("admin");
+//						System.out.println(permissions(exPerms));
 						
-						wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dDropdown)));
-						WebElement elDropdown = dr.findElement(By.xpath(dDropdown));
-						elDropdown.click();
-						Select se = new Select(elDropdown);
-						se.selectByVisibleText("Default");
+						dr.switchTo().defaultContent();
+						dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
+						dr.findElement(By.xpath("html/body"));
 						
-						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(defAdmin)));
-						dr.findElement(By.xpath(defAdmin)).click();
+						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(permField)));
+						dr.findElement(By.xpath(permField)).sendKeys(exPerms);
 						
-						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(editButton)));
-						dr.findElement(By.xpath(editButton)).click();
+						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(permissions(exPerms))));
+						WebElement elPerms = dr.findElement(By.xpath(permissions(exPerms)));
+						String foundPerms = elPerms.getText();
+						ctrA = ctrA + 1;
 						
-						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(permTab)));
-						dr.findElement(By.xpath(permTab)).click();
+//						System.out.println(foundPerms);
+//						System.out.println(exPerms);
+						
+						if(exPerms.equals(foundPerms)) 
+						{
+							System.out.println(exPerms + " Pass");
+							ctrB = ctrB + 1;
+						}
+						else
+						{
+							System.out.println(exPerms + " Fail");
+							
+						}
+						
+						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(permField)));
+						dr.findElement(By.xpath(permField)).clear();
 						
 						
 						
-						
-						
-						
-						
-						
-						//THE FOLLOWING CODES ARENT DONE YET.>>>
-						
-						String[] aa = {};
-						Assert.assertTrue(rolesLocated(aa,dr));
+					}
+					if(ctrA == ctrB)
+					{
 						p_EO.setOutputValues(p_EO.CollaborateUser, "Verify User Import Information", "Pass", " ");
 					}
-			}
+					
+					
+				}
 					catch(AssertionError e)
 					{
 						String failSentence = " ";
@@ -101,14 +130,14 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 							failSentence = failSentence.concat(s+" "+"\n");
 						}
 						
-						p_EO.setOutputValues(p_EO.CollaborateUser, "Verify User Import Information", "Fail",failSentence);
+						p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Roles", "Fail",failSentence);
 						System.out.println(p_EO.ExcelOutputTable);
 						wb.close();
 						throw e;
 					}
 					catch(Exception ex)
 					{
-						p_EO.setOutputValues(p_EO.CollaborateUser, "Verify User Import Information", "Fail",ex.getMessage().toString());
+						p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Roles", "Fail",ex.getMessage().toString());
 						ex.printStackTrace();
 						wb.close();
 						throw ex;

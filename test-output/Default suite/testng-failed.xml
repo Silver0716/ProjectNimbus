@@ -5,8 +5,8 @@
     <classes>
       <class name="controller.testsuite.testcase.Func_CollaborateUser">
         <methods>
-          <include name="verifyDelPersonalInfo"/>
           <include name="initSeleniumDriver"/>
+          <include name="Config_RolesVerification"/>
           <include name="deleteSeleniumDriver"/>
         </methods>
       </class> <!-- controller.testsuite.testcase.Func_CollaborateUser -->
