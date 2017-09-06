@@ -13,6 +13,8 @@ public class mod_ExcelOutput
 	public final String AdministratorUser = "Administrator User";
 	public final String PureCloudCCManager = "PureCloud CC Manager";
 	public final String PureCloudDeveloper = "PureCloud Developer";
+	public final String Config = "Configuration";
+	
 	
 	public void setOutputValues(String key, String testObj, String status, String remarks)
 	{
