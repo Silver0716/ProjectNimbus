@@ -1,7 +1,10 @@
 package processor;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -18,7 +21,7 @@ public class proc_CollaborateUser_verifyDelPersonalInfo extends mod_CollaborateU
 		p_UL.start(dr);
 	}
 	
-	public void init_Search(WebDriver dr)
+	public void init_Search(WebDriver dr) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(dr, 30);
 		
@@ -39,13 +42,13 @@ public class proc_CollaborateUser_verifyDelPersonalInfo extends mod_CollaborateU
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(confirm)));
 			dr.findElement(By.xpath(confirm)).click();
 			
-//			if (dr.findElement(By.xpath(sectionCreated)) == null)
-//			{
-//				
-//			}
-			Assert.assertTrue(dr.findElement(By.xpath(sectionCreated)).isDisplayed());
-			p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Delete Personal Information", "Pass", " ");
+			Thread.sleep(2000);
+			dr.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			
+			Assert.assertTrue(dr.findElements(By.xpath(sectionCreated)).isEmpty());
+			
+			p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Delete Personal Information", "Pass", " ");
+			dr.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			
 		}
 		catch(AssertionError e)

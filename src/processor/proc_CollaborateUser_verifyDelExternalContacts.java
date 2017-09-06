@@ -68,7 +68,7 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 				searchContacts.sendKeys(Keys.ENTER);
 				
 				
-				Assert.assertTrue(dr.findElements(By.xpath(contactResultCountTrue)).size()!=0);
+				Assert.assertTrue(dr.findElement(By.xpath(contactResultCountTrue)).getText().equals("(0)"));
 				p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Delete External Contacts", "Pass", " ");
 			
 				

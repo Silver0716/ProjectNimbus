@@ -43,10 +43,7 @@ public class proc_CollaborateUser_verifyAddPersonalInfo extends mod_CollaborateU
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(skillField)));
 				WebElement skill = dr.findElement(By.xpath(skillField));
 				skill.sendKeys("test",Keys.ENTER);
-				
-//				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(certField)));
-//				dr.findElement(By.xpath(skillField)).sendKeys("Test");
-				
+						
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(save)));
 				dr.findElement(By.xpath(save)).click();
 				

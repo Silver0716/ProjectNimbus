@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="37337" started-at="2017-09-06T13:56:01Z" finished-at="2017-09-06T13:56:39Z">
+  <suite name="Default suite" duration-ms="81874" started-at="2017-09-06T15:09:21Z" finished-at="2017-09-06T15:10:43Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="37337" started-at="2017-09-06T13:56:01Z" finished-at="2017-09-06T13:56:39Z">
+    <test name="Default test" duration-ms="81874" started-at="2017-09-06T15:09:21Z" finished-at="2017-09-06T15:10:43Z">
       <class name="controller.testsuite.testcase.Func_CollaborateUser">
-        <test-method status="PASS" signature="initSeleniumDriver()[pri:0, instance:controller.testsuite.testcase.Func_CollaborateUser@5f2108b5]" name="initSeleniumDriver" is-config="true" duration-ms="3722" started-at="2017-09-06T21:56:01Z" finished-at="2017-09-06T21:56:05Z">
+        <test-method status="PASS" signature="initSeleniumDriver()[pri:0, instance:controller.testsuite.testcase.Func_CollaborateUser@5f2108b5]" name="initSeleniumDriver" is-config="true" duration-ms="3708" started-at="2017-09-06T23:09:21Z" finished-at="2017-09-06T23:09:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initSeleniumDriver -->
-        <test-method status="PASS" signature="verifyAddPersonalInfo()[pri:9, instance:controller.testsuite.testcase.Func_CollaborateUser@5f2108b5]" name="verifyAddPersonalInfo" duration-ms="31740" started-at="2017-09-06T21:56:05Z" finished-at="2017-09-06T21:56:37Z">
+        <test-method status="PASS" signature="verifyDelExternalContacts()[pri:0, instance:controller.testsuite.testcase.Func_CollaborateUser@5f2108b5]" name="verifyDelExternalContacts" duration-ms="76283" started-at="2017-09-06T23:09:24Z" finished-at="2017-09-06T23:10:41Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAddPersonalInfo -->
-        <test-method status="PASS" signature="deleteSeleniumDriver()[pri:0, instance:controller.testsuite.testcase.Func_CollaborateUser@5f2108b5]" name="deleteSeleniumDriver" is-config="true" duration-ms="1860" started-at="2017-09-06T21:56:37Z" finished-at="2017-09-06T21:56:39Z">
+        </test-method> <!-- verifyDelExternalContacts -->
+        <test-method status="PASS" signature="deleteSeleniumDriver()[pri:0, instance:controller.testsuite.testcase.Func_CollaborateUser@5f2108b5]" name="deleteSeleniumDriver" is-config="true" duration-ms="1870" started-at="2017-09-06T23:10:41Z" finished-at="2017-09-06T23:10:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteSeleniumDriver -->

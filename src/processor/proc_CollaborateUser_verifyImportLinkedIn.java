@@ -59,8 +59,7 @@ proc_ExcelOutput p_EO = new proc_ExcelOutput();
 	        String  newWindow = iterator.next();
 
 	        dr.switchTo().window(newWindow);
-			
-			dr.findElement(By.xpath("html/body")).click();
+
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(emailField)));
 			dr.findElement(By.xpath(emailField)).sendKeys(Email);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(passField)));
