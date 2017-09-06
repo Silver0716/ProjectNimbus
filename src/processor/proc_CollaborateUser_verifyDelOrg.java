@@ -32,7 +32,6 @@ public class proc_CollaborateUser_verifyDelOrg extends mod_CollaborateUser_verif
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 				dr.findElement(By.xpath(ExContacts)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.id(orgTab)));
@@ -49,7 +48,6 @@ public class proc_CollaborateUser_verifyDelOrg extends mod_CollaborateUser_verif
 				wait.until(ExpectedConditions.elementToBeClickable(By.className(searchResult)));
 				dr.findElement(By.className(searchResult)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
 				dr.findElement(By.xpath(editOrg)).click();
 				
 				dr.findElement(By.id("orgForm"));
@@ -66,7 +64,6 @@ public class proc_CollaborateUser_verifyDelOrg extends mod_CollaborateUser_verif
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 				dr.findElement(By.xpath(ExContacts)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.id(orgTab)));
@@ -74,6 +71,7 @@ public class proc_CollaborateUser_verifyDelOrg extends mod_CollaborateUser_verif
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
 				searchContacts = dr.findElement(By.xpath(searchField));
+				searchContacts.clear();
 				searchContacts.sendKeys(p_UL.collab_TestOrg); 
 				
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(orgResultCountTrue)));

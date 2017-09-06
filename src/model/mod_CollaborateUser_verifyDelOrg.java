@@ -15,6 +15,6 @@ public class mod_CollaborateUser_verifyDelOrg
 	public String editOrg = ".//*[@id='editOrgLink']";
 	public String delOrg = ".//*[@id='delOrgLink']";
 	
-	public String orgResultCountTrue = ".//*[@id='OrganizationsTab']/span[contains(@aria-hidden,'false')]";
+	public String orgResultCountTrue = ".//*[@id='OrganizationsTab']/span[contains(text(),'(0)')]";
 			
 }

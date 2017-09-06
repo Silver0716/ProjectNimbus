@@ -15,7 +15,7 @@ public class mod_CollaborateUser_verifyAddOrg
 	public String save = ".//*[@id='saveOrgLink']";
 	
 	public String searchField = ".//*[@id='searchOrganizations']";
-	public String orgResultCount = ".//*[@id='OrganizationsTab']/span[contains(@aria-hidden,'false')]";
+	public String orgResultCount = ".//*[@id='OrganizationsTab']/span[contains(text(),'(1)')]";
 	public String searchResult = "orgCard";
 
 }

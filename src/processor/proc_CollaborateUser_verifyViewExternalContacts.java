@@ -32,7 +32,6 @@ public class proc_CollaborateUser_verifyViewExternalContacts extends mod_Collabo
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 				dr.findElement(By.xpath(ExContacts)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
@@ -46,11 +45,8 @@ public class proc_CollaborateUser_verifyViewExternalContacts extends mod_Collabo
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchResult)));
 				dr.findElement(By.xpath(searchResult)).sendKeys(Keys.ENTER);
 				
-				
 				dr.switchTo().defaultContent();
-				dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(iframe1);
-				dr.findElement(By.xpath("html/body")).click();
 			
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(confirmInfo)));
 				

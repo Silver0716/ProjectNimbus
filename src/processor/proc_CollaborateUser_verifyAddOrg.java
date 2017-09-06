@@ -31,7 +31,7 @@ public class proc_CollaborateUser_verifyAddOrg extends mod_CollaborateUser_verif
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 				dr.findElement(By.xpath(ExContacts)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
+				//dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.id(orgTab)));
@@ -50,7 +50,7 @@ public class proc_CollaborateUser_verifyAddOrg extends mod_CollaborateUser_verif
 				wait.until(ExpectedConditions.elementToBeClickable(By.id(proceed)));
 				dr.findElement(By.id(proceed)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
+				//dr.findElement(By.xpath("html/body")).click();
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(save)));
 				Thread.sleep(1000);
 				dr.findElement(By.xpath(save)).sendKeys(Keys.ENTER);
@@ -64,7 +64,7 @@ public class proc_CollaborateUser_verifyAddOrg extends mod_CollaborateUser_verif
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 				dr.findElement(By.xpath(ExContacts)).click();
 				
-				dr.findElement(By.xpath("html/body")).click();
+				//dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.id(orgTab)));
@@ -75,7 +75,7 @@ public class proc_CollaborateUser_verifyAddOrg extends mod_CollaborateUser_verif
 				searchContacts.sendKeys(p_UL.collab_TestOrg); 
 				
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(orgResultCount)));
-				
+								
 				Assert.assertTrue(dr.findElements(By.xpath(orgResultCount)).size()!=0);
 				p_EO.setOutputValues(p_EO.CollaborateUser, "Verify Add Organization", "Pass", " ");
 				

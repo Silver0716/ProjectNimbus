@@ -11,7 +11,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 public class mod_Config_ImportVerification 
 {
 	public String elAdmin = "html/body/descendant::li[contains(@class,'menu-top-level-item menu-admin')]/descendant::a[contains(@title,'Admin')]";
-	public String csvFile = getClass().getResource("/resources/people_import_example.xlsx").getPath().toString().replaceAll("%20", " ");
+	//public String csvFile = getClass().getResource("/resources/people_import_example.xlsx").getPath().toString().replaceAll("%20", " ");
+	public String csvFile = "C:\\Users\\ngrandia\\Documents\\Automation (QA)\\Bulk Import CSV\\test_bulk_import.xlsx";
 	public static XSSFSheet sheet1;
 	
 	public String People = ".//*[@id='home-welcomeV2']/descendant::div[contains(@class,'row')]/descendant::a[contains(text(),'People')]";

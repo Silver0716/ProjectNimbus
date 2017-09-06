@@ -36,13 +36,13 @@ public class Config_Test
 		p_EO.printOutputValues();
 	}
 
-	@Test(priority=0)
-	public void Config_ImportVerification() throws Exception
-	{
-		WebDriver dr = proc_SD.getWebDriver();
-		pc_vIV.initSteps(dr);
-		pc_vIV.init_Search(dr);
-	}
+//	@Test(priority=0)
+//	public void Config_ImportVerification() throws Exception
+//	{
+//		WebDriver dr = proc_SD.getWebDriver();
+//		pc_vIV.initSteps(dr);
+//		pc_vIV.init_Search(dr);
+//	}
 	
 }
 

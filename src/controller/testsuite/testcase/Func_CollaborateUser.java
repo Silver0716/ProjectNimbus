@@ -69,7 +69,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vDF.init_Search(dr);
 //	}
 //	
-//	@Test(priority=4)
+//	@Test(priority=1)
 //	public void verifyAddExternalContacts() throws Exception
 //	{
 //		WebDriver dr = proc_SD.getWebDriver();
@@ -77,7 +77,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vAEC.init_Search(dr);
 //	}
 //	
-//	@Test(priority=5,dependsOnMethods={"verifyAddExternalContacts"})
+//	@Test(priority=2)
 //	public void verifyViewExternalContacts()
 //	{
 //		WebDriver dr = proc_SD.getWebDriver();
@@ -85,7 +85,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vVEC.init_Search(dr);
 //	}
 //	
-//	@Test(priority=6,dependsOnMethods={"verifyAddExternalContacts","verifyViewExternalContacts"})
+//	@Test(priority=0)
 //	public void verifyDelExternalContacts() throws Exception
 //	{
 //		WebDriver dr = proc_SD.getWebDriver();
@@ -109,7 +109,7 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vVO.init_Search(dr);
 //	}
 //	
-//	@Test(priority=8,dependsOnMethods={"verifyAddOrg"})
+//	@Test(priority=0)
 //	public void verifyDelOrg()
 //	{
 //		WebDriver dr = proc_SD.getWebDriver();
@@ -117,13 +117,13 @@ public class Func_CollaborateUser extends proc_SeleniumDriver
 //		pc_vDO.init_Search(dr);
 //	}
 //	
-//	@Test(priority=9)
-//	public void verifyAddPersonalInfo()
-//	{
-//		WebDriver dr = proc_SD.getWebDriver();
-//		pc_vAPI.initSteps(dr);
-//		pc_vAPI.init_Search(dr);
-//	}
+	@Test(priority=9)
+	public void verifyAddPersonalInfo()
+	{
+		WebDriver dr = proc_SD.getWebDriver();
+		pc_vAPI.initSteps(dr);
+		pc_vAPI.init_Search(dr);
+	}
 //	
 //	@Test(priority=10)
 //	public void verifyImportLinkedIn() throws Exception

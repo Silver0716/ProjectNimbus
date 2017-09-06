@@ -32,15 +32,14 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 				dr.findElement(By.xpath(ExContacts)).click();
-				
-				dr.findElement(By.xpath("html/body")).click();
+
 				dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
 				WebElement searchContacts = dr.findElement(By.xpath(searchField));
 				searchContacts.sendKeys(p_UL.collab_TestUserName+" "+p_UL.collab_TestUserLastName); 
 				
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contactResultCountFalse)));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contactResultCountTrue)));
 				searchContacts.sendKeys(Keys.ENTER);
 
 			
@@ -48,17 +47,13 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 				dr.findElement(By.xpath(searchResult)).sendKeys(Keys.ENTER);
 				
 				dr.switchTo().defaultContent();
-				dr.findElement(By.xpath("html/body")).click();
 				dr.switchTo().frame(iframe1);
 				
-				
-				dr.findElement(By.xpath("html/body")).click();
-				//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(editContact)));
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(editContact)));
 				dr.findElement(By.xpath(editContact)).click();
 				
 		
 				dr.findElement(By.id("contactInfo")).click();
-				//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("delContact")));
 				dr.findElement(By.xpath(delContact)).click();
 				
 				dr.switchTo().alert().accept();
@@ -66,6 +61,7 @@ public class proc_CollaborateUser_verifyDelExternalContacts extends mod_Collabor
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(searchField)));
 				searchContacts = dr.findElement(By.xpath(searchField));
+				searchContacts.clear();
 				searchContacts.sendKeys(p_UL.collab_TestUserName+" "+p_UL.collab_TestUserLastName); 
 				
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contactResultCountTrue)));

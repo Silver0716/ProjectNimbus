@@ -9,7 +9,7 @@ public class mod_CollaborateUser_verifyViewOrg
 	public String iframe1 = "relateFrame";
 	
 	public String searchField = ".//*[@id='searchOrganizations']";
-	public String orgResultCountFalse = ".//*[@id='OrganizationsTab']/span[contains(@aria-hidden,'false')]";
+	public String orgResultCountFalse = ".//*[@id='OrganizationsTab']/span[contains(text(),'(1)')]";
 	
 	public String searchResult = "orgCard";
 	public String confirmInfo = ".//*[@id='contactsPanelHeader']";

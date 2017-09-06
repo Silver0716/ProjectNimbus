@@ -1,7 +1,9 @@
 package processor;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -39,10 +41,16 @@ public class proc_CollaborateUser_verifyAddPersonalInfo extends mod_CollaborateU
 				dr.findElement(By.xpath(editSection)).click();
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(skillField)));
-				dr.findElement(By.xpath(skillField)).sendKeys("Test");
+				WebElement skill = dr.findElement(By.xpath(skillField));
+				skill.sendKeys("test",Keys.ENTER);
+				
+//				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(certField)));
+//				dr.findElement(By.xpath(skillField)).sendKeys("Test");
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(save)));
-				dr.findElement(By.xpath(save));
+				dr.findElement(By.xpath(save)).click();
+				
+				//dr.navigate().refresh();
 				
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(sectionCreated)));
 		

@@ -32,7 +32,6 @@ proc_ExcelOutput p_EO = new proc_ExcelOutput();
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ExContacts)));
 			dr.findElement(By.xpath(ExContacts)).click();
 			
-			dr.findElement(By.xpath("html/body"));
 			dr.switchTo().frame(dr.findElement(By.id(iframe1)));
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.id(orgTab)));
@@ -49,10 +48,8 @@ proc_ExcelOutput p_EO = new proc_ExcelOutput();
 			dr.findElement(By.className(searchResult)).click();
 			
 			dr.switchTo().defaultContent();
-			dr.findElement(By.xpath("html/body")).click();
 			dr.switchTo().frame(iframe1);
 			
-			dr.findElement(By.xpath("html/body")).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(confirmInfo)));
 			
 			Assert.assertTrue(dr.findElements(By.xpath(confirmInfo)).size()!=0);
