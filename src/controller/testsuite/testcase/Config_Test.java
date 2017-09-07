@@ -8,12 +8,14 @@ import org.testng.annotations.Test;
 
 import processor.proc_SeleniumDriver;
 import processor.proc_Config_ImportVerification;
+import processor.proc_Config_ImportVerifyMultiRoles;
 import processor.proc_ExcelOutput;
 
 
 public class Config_Test 
 {
 	proc_Config_ImportVerification pc_vIV = new proc_Config_ImportVerification();
+	proc_Config_ImportVerifyMultiRoles pc_IVMR = new proc_Config_ImportVerifyMultiRoles();
 	proc_ExcelOutput p_EO = new proc_ExcelOutput();
 	proc_SeleniumDriver proc_SD = new proc_SeleniumDriver();
 	
@@ -43,6 +45,14 @@ public class Config_Test
 //		pc_vIV.initSteps(dr);
 //		pc_vIV.init_Search(dr);
 //	}
+	
+	@Test(priority=0)
+	public void Config_ImportVerifyMultiRoles() throws Exception
+	{
+		WebDriver dr = proc_SD.getWebDriver();
+		pc_IVMR.initSteps(dr);
+		pc_IVMR.init_Search(dr);
+	}
 	
 }
 

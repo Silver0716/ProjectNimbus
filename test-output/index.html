@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\ngrandia\AppData\Local\Temp\testng-eclipse--1702809441\testng-customsuite.xml</span>
+                    <span>C:\Users\ngrandia\AppData\Local\Temp\testng-eclipse-1155474004\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="controller.testsuite.testcase.Func_CollaborateUser" hash-for-method="Config_RolesVerification">Config_RolesVerification</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="controller.testsuite.testcase.Config_Test" hash-for-method="Config_ImportVerifyMultiRoles">Config_ImportVerifyMultiRoles</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -120,19 +120,17 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">controller.testsuite.testcase.Func_CollaborateUser</span>
+              <span class="class-name">controller.testsuite.testcase.Config_Test</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Config_RolesVerification">
-                  </a> <!-- Config_RolesVerification -->
-                  <span class="method-name">Config_RolesVerification</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: .//*[@id=&apos;directory-rolesV2-edit&apos;]/descendant::div[@class=&apos;fixtable-inner&apos;]/descendant::span[contains(text(),&apos;View a user\&apos;s roles&apos;)] (tried for 30 second(s) with 500 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at processor.proc_Config_RolesVerification.init_Search(proc_Config_RolesVerification.java:93)
-	at controller.testsuite.testcase.Func_CollaborateUser.Config_RolesVerification(Func_CollaborateUser.java:149)
+                  <a name="Config_ImportVerifyMultiRoles">
+                  </a> <!-- Config_ImportVerifyMultiRoles -->
+                  <span class="method-name">Config_ImportVerifyMultiRoles</span>
+                  <div class="stack-trace">java.lang.NullPointerException
+	at processor.proc_Config_ImportVerifyMultiRoles.init_Search(proc_Config_ImportVerifyMultiRoles.java:152)
+	at controller.testsuite.testcase.Config_Test.Config_ImportVerifyMultiRoles(Config_Test.java:54)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -158,34 +156,6 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:230)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
-Caused by: org.openqa.selenium.InvalidSelectorException: invalid selector: Unable to locate an element with the xpath expression .//*[@id=&apos;directory-rolesV2-edit&apos;]/descendant::div[@class=&apos;fixtable-inner&apos;]/descendant::span[contains(text(),&apos;View a user\&apos;s roles&apos;)] because of the following error:
-SyntaxError: Failed to execute &apos;evaluate&apos; on &apos;Document&apos;: The string &apos;.//*[@id=&apos;directory-rolesV2-edit&apos;]/descendant::div[@class=&apos;fixtable-inner&apos;]/descendant::span[contains(text(),&apos;View a user\&apos;s roles&apos;)]&apos; is not a valid XPath expression.
-  (Session info: chrome=60.0.3112.113)
-  (Driver info: chromedriver=2.30.477700 (0057494ad8732195794a7b32078424f92a5fce41),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 16 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/invalid_selector_exception.html
-Build info: version: &apos;unknown&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;MNL-NGRANDIA-LT&apos;, ip: &apos;10.87.10.75&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_144&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.30.477700 (0057494ad8732195794a7b32078424f92a5fce41), userDataDir=C:\Users\ngrandia\AppData\Local\Temp\scoped_dir15632_1300}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=60.0.3112.113, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: a300895b5a43db0a500e1c6bdfa42523
-*** Element info: {Using=xpath, value=.//*[@id=&apos;directory-rolesV2-edit&apos;]/descendant::div[@class=&apos;fixtable-inner&apos;]/descendant::span[contains(text(),&apos;View a user\&apos;s roles&apos;)]}
-	at sun.reflect.GeneratedConstructorAccessor16.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:437)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementsByXPath(RemoteWebDriver.java:513)
-	at org.openqa.selenium.By$ByXPath.findElements(By.java:356)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:398)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)
-	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 27 more
 
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -195,7 +165,7 @@ Session ID: a300895b5a43db0a500e1c6bdfa42523
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\ngrandia\AppData\Local\Temp\testng-eclipse--1702809441\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\ngrandia\AppData\Local\Temp\testng-eclipse-1155474004\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -204,7 +174,7 @@ Session ID: a300895b5a43db0a500e1c6bdfa42523
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;controller.testsuite.testcase.Func_CollaborateUser&quot;/&gt;
+      &lt;class name=&quot;controller.testsuite.testcase.Config_Test&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -246,9 +216,9 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Config_RolesVerification')
-data.setCell(0, 2, 'controller.testsuite.testcase.Func_CollaborateUser')
-data.setCell(0, 3, 114759);
+data.setCell(0, 1, 'Config_ImportVerifyMultiRoles')
+data.setCell(0, 2, 'controller.testsuite.testcase.Config_Test')
+data.setCell(0, 3, 119428);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -279,7 +249,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">controller.testsuite.testcase.Func_CollaborateUser</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">controller.testsuite.testcase.Config_Test</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">initSeleniumDriver</span>
                 <span class="method-start">0 ms</span>
@@ -287,12 +257,14 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">Config_RolesVerification</span>
-                <span class="method-start">3786 ms</span>
+                <span class="method-name">Config_ImportVerifyMultiRoles</span>
+                <span class="method-start">3701 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">deleteSeleniumDriver</span>
-                <span class="method-start">118548 ms</span>
+                <span class="method-start">123132 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

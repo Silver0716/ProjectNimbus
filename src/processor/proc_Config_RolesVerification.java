@@ -41,6 +41,8 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 			{
 				sheet1 = wb.getSheetAt(0);
 				
+				dr.switchTo().defaultContent();
+				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elAdmin)));
 				dr.findElement(By.xpath(elAdmin)).click();
 				
@@ -52,6 +54,7 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 				dr.switchTo().defaultContent();
 				dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
 				
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(RolesPerm)));
 				dr.findElement(By.xpath(RolesPerm)).click();
 				
 				rowcount = sheet1.getLastRowNum();

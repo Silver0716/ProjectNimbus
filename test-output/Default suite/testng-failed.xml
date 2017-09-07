@@ -3,13 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="controller.testsuite.testcase.Func_CollaborateUser">
+      <class name="controller.testsuite.testcase.Config_Test">
         <methods>
+          <include name="Config_ImportVerifyMultiRoles"/>
           <include name="initSeleniumDriver"/>
-          <include name="Config_RolesVerification"/>
+          <include name="printResult"/>
           <include name="deleteSeleniumDriver"/>
         </methods>
-      </class> <!-- controller.testsuite.testcase.Func_CollaborateUser -->
+      </class> <!-- controller.testsuite.testcase.Config_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
