@@ -5,8 +5,13 @@ import static org.testng.Assert.assertTrue;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -41,8 +46,6 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 			{
 				sheet1 = wb.getSheetAt(0);
 				
-				dr.switchTo().defaultContent();
-				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elAdmin)));
 				dr.findElement(By.xpath(elAdmin)).click();
 				
@@ -54,7 +57,6 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 				dr.switchTo().defaultContent();
 				dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
 				
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(RolesPerm)));
 				dr.findElement(By.xpath(RolesPerm)).click();
 				
 				rowcount = sheet1.getLastRowNum();
@@ -71,58 +73,49 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 				Select se = new Select(elDropdown);
 				se.selectByVisibleText("Default");
 				
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(defAdmin)));
-				dr.findElement(By.xpath(defAdmin)).click();
+				String textRole = role(sheet1.getRow(0).getCell(0).getStringCellValue());
+				
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(textRole)));
+				dr.findElement(By.xpath(textRole)).click();
 				
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath(editButton)));
 				dr.findElement(By.xpath(editButton)).click();
 				
 				//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(permTab)));
 				dr.findElement(By.xpath(permTab)).click();
-
-					for(int i=0; i<=rowcount; i++)
+					
+				int columnCount = 0;
+				Row r = sheet1.getRow(0);
+				int maxColCount = r.getLastCellNum();
+				
+				while(columnCount<maxColCount)
+				{
+					String roleName = sheet1.getRow(0).getCell(columnCount).getStringCellValue();
+					listWebPermission(dr);
+					listExcelPermission(dr, sheet1, columnCount);
+					
+					checkPermission(roleName);
+					
+					clearList();
+					clearInput(dr,permField,wait);
+					
+					columnCount++;
+					dr.findElement(By.xpath(returnPage)).click();
+					
+					if(columnCount<maxColCount)
 					{
-						exPerms = sheet1.getRow(i).getCell(0).getStringCellValue();
-						
-//						System.out.println(permissions(exPerms));
-						
-						dr.switchTo().defaultContent();
-						dr.switchTo().frame(dr.findElement(By.xpath(iframe1)));
-						dr.findElement(By.xpath("html/body"));
-						
-						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(permField)));
-						dr.findElement(By.xpath(permField)).sendKeys(exPerms);
-						
-						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(permissions(exPerms))));
-						WebElement elPerms = dr.findElement(By.xpath(permissions(exPerms)));
-						String foundPerms = elPerms.getText();
-						ctrA = ctrA + 1;
-						
-//						System.out.println(foundPerms);
-//						System.out.println(exPerms);
-						
-						if(exPerms.equals(foundPerms)) 
-						{
-							System.out.println(exPerms + " Pass");
-							ctrB = ctrB + 1;
-						}
-						else
-						{
-							System.out.println(exPerms + " Fail");
-							
-						}
-						
-						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(permField)));
-						dr.findElement(By.xpath(permField)).clear();
-						
-						
+						repeat(dr, wait, role(sheet1.getRow(0).getCell(columnCount).getStringCellValue()));
+					}
+				}
+					if(failRemarks.size()>0)
+					{
+						Assert.assertTrue(failRemarks.size()<0);
 						
 					}
-					if(ctrA == ctrB)
+					else
 					{
 						p_EO.setOutputValues(p_EO.CollaborateUser, "Verify User Import Information", "Pass", " ");
 					}
-					
 					
 				}
 					catch(AssertionError e)
@@ -146,29 +139,8 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 						throw ex;
 					}
 					wb.close();
-					
 				}
 			
-				public boolean rolesLocated(String[] roles, WebDriver dr) {
-					for(int i = 0; i < roles.length; i++) {
-						if(dr.findElement(By.xpath(roles[i])) == null)
-							return false;
-					}
-					return true;
-				}	
-			
-				public void compareValues(String excelValue, String value)
-				{
-					if(excelValue.equals(value))
-					{
-						totalValuePassed++;
-					}
-					else
-					{
-						add(excelValue, value);
-					}
-				}
-				
 				public boolean isElementPresent(String screenBox, WebDriver dr)
 				{
 					try
@@ -181,8 +153,88 @@ public class proc_Config_RolesVerification extends mod_Config_RolesVerification
 						return false;
 					}
 				}
-			}			
+				
+				public void clearInput(WebDriver dr, String xPathValue, WebDriverWait wait)
+				{
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPathValue)));
+					dr.findElement(By.xpath(xPathValue)).clear();
+				}
+				
+				public void repeat(WebDriver dr, WebDriverWait wait, String xPathvalue)
+				{
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dDropdown)));
+					WebElement elDropdown = dr.findElement(By.xpath(dDropdown));
+					elDropdown.click();
+					Select se = new Select(elDropdown);
+					se.selectByVisibleText("Default");
+					
+					wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPathvalue)));
+					dr.findElement(By.xpath(xPathvalue)).click();
+					
+					wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPathvalue.concat(editBtn))));
+					dr.findElement(By.xpath(xPathvalue.concat(editBtn))).click();
+					
+					dr.findElement(By.xpath(permTab)).click();
+				}
+				
+				public void listWebPermission(WebDriver dr)
+				{
+					List<WebElement> tempList = dr.findElements(By.xpath(listResultPermissions));
+					for(WebElement element:tempList)
+					{
+						webPermissionsList.add(element.getText());
+					}
+				}
+				
+				public void listExcelPermission(WebDriver dr, XSSFSheet excelSheet, int colCount)
+				{
+					int totalRow = 0;
+					
+					for(Row row : excelSheet)
+					{
+						if(row.getCell(colCount)!=null)
+						{
+							totalRow +=1;
+						}
+					}
+					
+					for(int i=1; i<totalRow; i++)
+					{
+						excelPermissionsList.add(sheet1.getRow(i).getCell(colCount).getStringCellValue());
+					
+					}
+				}
+				
+				public void checkPermission(String roleName)
+				{
+					
+					Collection<String> excelList= new ArrayList<String>(excelPermissionsList);
+					Collection<String> webList= new ArrayList<String>(excelPermissionsList);
+					excelPermissionsList.removeAll(webList);
+					for(String value:excelPermissionsList)
+					{
+						if(value.length()>0)
+						{
+							failRemarks.add("The permision '"+value+"' is not present. for Role: "+roleName);
+						}
+					}
+					
+					webPermissionsList.removeAll(excelList);
+					for(String value:webPermissionsList)
+					{
+						if(value.length()>0)
+						{
+							failRemarks.add("The permision '"+value+"' shouldn't be added for this Role:"+roleName);
+						}
+					}
+					
+				}
 						
-						
-						
+				public void clearList()
+				{
+					webPermissionsList.clear();
+					excelPermissionsList.clear();
+				}
+			
+			}								
 						
